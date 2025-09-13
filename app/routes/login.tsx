@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Form, useActionData, useNavigation } from "react-router";
+import { Form, redirect, useActionData, useNavigation } from "react-router";
 import { createSupabaseServerClient } from "~/supabase.server";
 
 export function meta({}: Route.MetaArgs) {
@@ -129,6 +129,7 @@ export async function action({ request }: Route.ActionArgs) {
   if (error) {
     return { error: true };
   }
-
-  return { success: true };
+  return redirect("/", {
+    headers,
+  });
 }

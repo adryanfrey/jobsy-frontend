@@ -10,7 +10,6 @@ import {
 import type { Route } from "./+types/root";
 import { CssBaseline } from "@mui/material";
 import { createSupabaseServerClient } from "./supabase.server";
-import type { User } from "@supabase/auth-js";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
