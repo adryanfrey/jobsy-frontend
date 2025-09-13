@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import { CssBaseline } from "@mui/material";
 import { createSupabaseServerClient } from "./supabase.server";
+import type { User } from "@supabase/auth-js";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -45,17 +46,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export async function loader({ request }: Route.LoaderArgs) {
   const { supabaseClient } = createSupabaseServerClient(request);
-  const url = new URL(request.url);
-  const publicRoutes = ["/login", "/logout"];
-  const isPublicRoute = publicRoutes.some((route) => url.pathname === route);
-
+  const urlPathname = new URL(request.url).pathname;
   const {
     data: { user },
   } = await supabaseClient.auth.getUser();
 
-  if (!user && !isPublicRoute) {
-    return redirect("/login");
-  }
+  validateOrRedirectToLogin(urlPathname, user);
   return { user };
 }
 
@@ -90,4 +86,22 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
+}
+
+function validateOrRedirectToLogin(
+  reqyestUrlPathname: string,
+  user: User | null
+) {
+  /*
+    - Centralized function for validating authentication across the application.
+    - Only public routes specified here are allowed to be accessed without authentication.
+  */
+  const publicRoutes = ["/login"];
+  const isPublicRoute = publicRoutes.some(
+    (route) => reqyestUrlPathname === route
+  );
+
+  if (!user && !isPublicRoute) {
+    return redirect("/login");
+  }
 }
