@@ -5,17 +5,20 @@ import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Form } from "react-router";
+import Alert from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Form, useActionData, useNavigation } from "react-router";
+import { createSupabaseServerClient } from "~/supabase.server";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Login" }];
 }
 
-export function loader({}: Route.LoaderArgs) {
-  return {};
-}
-
 export default function LoginPage() {
+  const actionData = useActionData<typeof action>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
   return (
     <Box
       sx={{
@@ -44,7 +47,14 @@ export default function LoginPage() {
         <Typography component="h1" variant="h4" sx={{ width: "100%" }}>
           Sign in
         </Typography>
-        <Form>
+
+        {actionData?.error && (
+          <Alert severity="error" sx={{ width: "100%" }}>
+            Invalid email or password. Please try again.
+          </Alert>
+        )}
+
+        <Form method="post">
           <Box
             sx={{
               display: "flex",
@@ -66,6 +76,7 @@ export default function LoginPage() {
                 fullWidth
                 variant="outlined"
                 color={"primary"}
+                disabled={isSubmitting}
               />
             </FormControl>
             <FormControl>
@@ -81,10 +92,21 @@ export default function LoginPage() {
                 fullWidth
                 variant="outlined"
                 color={"primary"}
+                disabled={isSubmitting}
               />
             </FormControl>
-            <Button type="submit" fullWidth variant="contained">
-              Sign in
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              disabled={isSubmitting}
+              startIcon={
+                isSubmitting ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : null
+              }
+            >
+              {isSubmitting ? "" : "Sign in"}
             </Button>
           </Box>
         </Form>
@@ -93,17 +115,20 @@ export default function LoginPage() {
   );
 }
 
-// export async function action({}: Route.ActionArgs) {
-//   const { supabaseClient, headers } = createSupabaseServerClient(request);
-//   const formData = await request.formData();
-//   const { error } = await supabaseClient.auth.signInWithOtp({
-//     email: formData.get("email") as string,
-//     options: {
-//       emailRedirectTo: "http://localhost:3000/auth/callback",
-//     },
-//   });
-//   if (error) {
-//     return;
-//   }
-//   return { success: true };
-// }
+export async function action({ request }: Route.ActionArgs) {
+  const { supabaseClient, headers } = createSupabaseServerClient(request);
+  const formData = await request.formData();
+  const email = String(formData.get("email"));
+  const password = String(formData.get("password"));
+
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    return { error: true };
+  }
+
+  return { success: true };
+}
