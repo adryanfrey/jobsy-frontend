@@ -45,13 +45,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export async function loader({ request }: Route.LoaderArgs) {
+  /*
+    - This loader contains the centralized logic for validating authentication across the application.
+    - Only public routes specified here are allowed to be accessed without authentication.
+    - All other routes created in the future will require authentication by default.
+  */
   const { supabaseClient } = createSupabaseServerClient(request);
-  const urlPathname = new URL(request.url).pathname;
   const {
     data: { user },
   } = await supabaseClient.auth.getUser();
 
-  validateOrRedirectToLogin(urlPathname, user);
+  const publicRoutes = ["/login"];
+  const urlPathname = new URL(request.url).pathname;
+  const isPublicRoute = publicRoutes.some((route) => urlPathname === route);
+
+  if (!user && !isPublicRoute) {
+    return redirect("/login");
+  }
   return { user };
 }
 
@@ -86,22 +96,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
-}
-
-function validateOrRedirectToLogin(
-  reqyestUrlPathname: string,
-  user: User | null
-) {
-  /*
-    - Centralized function for validating authentication across the application.
-    - Only public routes specified here are allowed to be accessed without authentication.
-  */
-  const publicRoutes = ["/login"];
-  const isPublicRoute = publicRoutes.some(
-    (route) => reqyestUrlPathname === route
-  );
-
-  if (!user && !isPublicRoute) {
-    return redirect("/login");
-  }
 }
