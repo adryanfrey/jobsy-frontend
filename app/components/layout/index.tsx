@@ -14,13 +14,15 @@ export default function AppLayout({ children }: LayoutProps) {
       <ProgressBar />
       <Header />
 
-      <Box sx={{ display: "flex", height: "100%" }}>
+      <Box sx={{ display: "flex", flex: 1, overflow: "hidden" }}>
         <Sidebar />
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            overflow: "auto",
+        <Box 
+          component="main" 
+          sx={{ 
+            flexGrow: 1, 
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column"
           }}
         >
           {children}

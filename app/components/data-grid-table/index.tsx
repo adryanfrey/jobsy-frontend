@@ -1,0 +1,96 @@
+import { useMemo } from "react";
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import type { GridColDef, GridRowParams } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+import type { DataGridTableProps, ColumnConfig, TableAction } from "./types";
+
+export default function DataGridTable<T extends { id: string | number }>({
+  columns,
+  rows,
+  removeBorder = false,
+  pageSize = 10,
+  pageSizeOptions = [5, 10, 25, 50],
+  actions = [],
+  onRowClick,
+}: DataGridTableProps<T>) {
+  const gridColumns: GridColDef[] = useMemo(() => {
+    let baseColumns: GridColDef[] = columns.map((col: ColumnConfig<T>) => ({
+      field: col.field as string,
+      headerName: col.headerName,
+      width: col.width || 150,
+      sortable: col.sortable !== false,
+      filterable: col.filterable !== false,
+      type: col.type || "string",
+      align: col.align || "left",
+      headerAlign: col.align || "left",
+      renderCell: col.render
+        ? (params) => {
+            if (col.render) {
+              return col.render(params.value, params.row);
+            }
+            return params.value;
+          }
+        : undefined,
+    }));
+
+    if (actions.length > 0) {
+      baseColumns.push({
+        field: "actions",
+        type: "actions",
+        headerName: "Actions",
+        width: actions.length * 50,
+        getActions: (params: GridRowParams) => {
+          return actions.map((action: TableAction<T>, index: number) => (
+            <GridActionsCellItem
+              key={index}
+              icon={action.icon}
+              label={action.label}
+              onClick={() => action.onClick(params.row as T)}
+              showInMenu={false}
+            />
+          ));
+        },
+      });
+    }
+    return baseColumns;
+  }, [columns, actions]);
+
+  const handleRowClick = (params: GridRowParams) => {
+    if (onRowClick) {
+      onRowClick(params.row as T);
+    }
+  };
+
+  return (
+    <Box
+      sx={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <DataGrid
+        rows={rows}
+        columns={gridColumns}
+        pageSizeOptions={pageSizeOptions}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize,
+            },
+          },
+        }}
+        onRowClick={handleRowClick}
+        disableRowSelectionOnClick
+        sx={{
+          flex: 1,
+          border: removeBorder ? 0 : "1px solid rgba(224, 224, 224, 1)",
+          "& .MuiDataGrid-columnHeaderTitle": {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Box>
+  );
+}
