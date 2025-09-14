@@ -8,7 +8,7 @@ export default function Sidebar() {
       sx={{
         paddingTop: 0.7,
         height: "100%",
-        maxWidth: 240,
+        minWidth: 220,
         borderRight: "1px solid",
         borderColor: "divider",
       }}

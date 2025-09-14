@@ -14,7 +14,7 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "title",
     headerName: "Job Title",
-    width: 280,
+    width: 210,
     type: "string",
     sortable: true,
     filterable: true,
