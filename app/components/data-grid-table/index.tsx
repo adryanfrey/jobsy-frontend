@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import type { GridColDef, GridRowParams } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import type { DataGridTableProps, ColumnConfig, TableAction } from "./types";
 
 export default function DataGridTable<T extends { id: string | number }>({
@@ -73,7 +73,7 @@ function getGridColumns<T>(
         return actions.map((action: TableAction<T>, index: number) => (
           <GridActionsCellItem
             key={index}
-            icon={action.icon}
+            icon={<Tooltip title={action.label}>{action.icon}</Tooltip>}
             label={action.label}
             onClick={() => action.onClick(params.row as T)}
             showInMenu={false}

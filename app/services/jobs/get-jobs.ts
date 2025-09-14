@@ -8,6 +8,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-15"),
       workplaceType: "Hybrid",
       technologies: ["React", "TypeScript", "Node.js", "GCP"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-14"),
       workplaceType: "Remote",
       technologies: ["React", "JavaScript", "GraphQL", "Redux"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 3,
@@ -26,6 +28,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-13"),
       workplaceType: "On-site",
       technologies: ["Vue.js", "Python", "AWS", "Docker"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 4,
@@ -35,6 +38,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-12"),
       workplaceType: "Hybrid",
       technologies: ["Java", "Spring", "AWS", "Kubernetes"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 5,
@@ -44,6 +48,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-11"),
       workplaceType: "Remote",
       technologies: ["Azure", "Terraform", "Jenkins", "Docker"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 6,
@@ -53,6 +58,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-10"),
       workplaceType: "On-site",
       technologies: ["Python", "TensorFlow", "SQL", "Jupyter"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 7,
@@ -62,6 +68,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-09"),
       workplaceType: "Hybrid",
       technologies: ["Python", "PyTorch", "MLflow", "Kubernetes"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 8,
@@ -71,6 +78,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-08"),
       workplaceType: "Remote",
       technologies: ["AWS", "Salesforce", "Apex", "Lightning"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 11,
@@ -80,6 +88,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-08"),
       workplaceType: "Remote",
       technologies: ["AWS", "Salesforce", "Apex", "Lightning"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 9,
@@ -89,6 +98,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-08"),
       workplaceType: "Remote",
       technologies: ["AWS", "Salesforce", "Apex", "Lightning"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 10,
@@ -98,6 +108,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-08"),
       workplaceType: "Remote",
       technologies: ["AWS", "Salesforce", "Apex", "Lightning"],
+      source: "https://www.linkedin.com/",
     },
     {
       id: 12,
@@ -107,6 +118,7 @@ export async function getJobs() {
       postedAt: new Date("2024-01-08"),
       workplaceType: "Remote",
       technologies: ["AWS", "Salesforce", "Apex", "Lightning"],
+      source: "https://www.linkedin.com/",
     },
   ];
 }

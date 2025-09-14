@@ -1,6 +1,9 @@
 import { useLoaderData } from "react-router";
 import { Box } from "@mui/material";
-import { VisibilityOutlined, BookmarkBorderOutlined } from "@mui/icons-material";
+import {
+  VisibilityOutlined,
+  BookmarkBorderOutlined,
+} from "@mui/icons-material";
 import PageHeader from "~/components/page-header";
 import DataGridTable from "~/components/data-grid-table";
 import { getJobs } from "~/services/jobs/get-jobs";
@@ -17,7 +20,7 @@ export default function JobSearch() {
   const { jobs } = useLoaderData<typeof loader>();
 
   const handleViewSource = (job: JobRow) => {
-    console.log("View source for:", job.title);
+    window.open(job.source, "_blank");
   };
 
   const handleSaveJob = (job: JobRow) => {

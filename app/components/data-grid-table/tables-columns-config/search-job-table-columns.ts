@@ -8,6 +8,7 @@ export interface JobRow {
   postedAt: Date;
   workplaceType: string;
   technologies: string[];
+  source: string;
 }
 
 export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
