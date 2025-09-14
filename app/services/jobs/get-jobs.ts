@@ -4,7 +4,7 @@ export async function getJobs() {
       id: 1,
       title: "Software Engineer",
       description:
-        "We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js.",
+        "We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js. We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js.  We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js. We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js.",
       company: "Google",
       location: "Mountain View, CA",
       postedAt: new Date("2024-01-15"),
