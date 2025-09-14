@@ -6,10 +6,12 @@ import {
   redirect,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "react-router";
 import type { Route } from "./+types/root";
 import { CssBaseline } from "@mui/material";
 import { createSupabaseServerClient } from "./supabase.server";
+import AppLayout from "./components/layout";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -61,11 +63,21 @@ export async function loader({ request }: Route.LoaderArgs) {
   if (!user && !isPublicRoute) {
     return redirect("/login");
   }
-  return { user };
+  return { user, isPublicRoute };
 }
 
 export default function App() {
-  return <Outlet />;
+  const { isPublicRoute } = useLoaderData<typeof loader>();
+
+  if (isPublicRoute) {
+    return <Outlet />;
+  }
+
+  return (
+    <AppLayout>
+      <Outlet />
+    </AppLayout>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

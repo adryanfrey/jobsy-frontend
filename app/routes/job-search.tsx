@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Home() {
+export default function JobSearch() {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" component="h1" gutterBottom>
-        Welcome to Jobsy
+        Job Search
       </Typography>
       <Typography variant="body1">
-        Your job search journey starts here. Use the navigation sidebar to explore job opportunities, manage your saved jobs, and customize your preferences.
+        This is the job search page. Job search functionality will be implemented here.
       </Typography>
     </Box>
   );
