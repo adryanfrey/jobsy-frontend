@@ -4,6 +4,8 @@ export interface ColumnConfig<T> {
   field: keyof T;
   headerName: string;
   width?: number;
+  flex?: number;
+  minWidth?: number;
   type?: "string" | "number" | "date" | "boolean";
   sortable?: boolean;
   filterable?: boolean;

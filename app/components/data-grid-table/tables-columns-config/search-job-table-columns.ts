@@ -3,6 +3,7 @@ import type { ColumnConfig } from "../types";
 export interface JobRow {
   id: number;
   title: string;
+  description: string;
   company: string;
   location: string;
   postedAt: Date;
@@ -15,7 +16,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "title",
     headerName: "Job Title",
-    width: 210,
+    flex: 2,
+    minWidth: 200,
     type: "string",
     sortable: true,
     filterable: true,
@@ -24,7 +26,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "company",
     headerName: "Company",
-    width: 150,
+    flex: 1,
+    minWidth: 100,
     type: "string",
     sortable: true,
     filterable: true,
@@ -33,7 +36,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "location",
     headerName: "Location",
-    width: 180,
+    flex: 1,
+    minWidth: 140,
     type: "string",
     sortable: true,
     filterable: true,
@@ -42,7 +46,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "postedAt",
     headerName: "Posted At",
-    width: 120,
+    flex: 0.8,
+    minWidth: 110,
     type: "date",
     sortable: true,
     filterable: true,
@@ -51,7 +56,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "workplaceType",
     headerName: "Workplace Type",
-    width: 140,
+    flex: 0.8,
+    minWidth: 130,
     type: "string",
     sortable: true,
     filterable: true,
@@ -60,7 +66,8 @@ export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "technologies",
     headerName: "Technologies/Tools",
-    width: 350,
+    flex: 3,
+    minWidth: 250,
     type: "string",
     sortable: false,
     filterable: true,

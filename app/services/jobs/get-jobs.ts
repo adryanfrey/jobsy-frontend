@@ -3,6 +3,8 @@ export async function getJobs() {
     {
       id: 1,
       title: "Software Engineer",
+      description:
+        "We are looking for a Software Engineer with 3 years of experience in React, TypeScript, and Node.js.",
       company: "Google",
       location: "Mountain View, CA",
       postedAt: new Date("2024-01-15"),
@@ -13,6 +15,8 @@ export async function getJobs() {
     {
       id: 2,
       title: "Frontend Developer",
+      description:
+        "We are looking for a Frontend Developer with 3 years of experience in React, JavaScript, and GraphQL.",
       company: "Facebook",
       location: "Menlo Park, CA",
       postedAt: new Date("2024-01-14"),
@@ -23,6 +27,8 @@ export async function getJobs() {
     {
       id: 3,
       title: "Full Stack Developer",
+      description:
+        "We are looking for a Full Stack Developer with 3 years of experience in React, JavaScript, and GraphQL.",
       company: "Netflix",
       location: "Los Gatos, CA",
       postedAt: new Date("2024-01-13"),
@@ -33,6 +39,8 @@ export async function getJobs() {
     {
       id: 4,
       title: "Backend Engineer",
+      description:
+        "We are looking for a Backend Engineer with 3 years of experience in Java, Spring, and AWS.",
       company: "Amazon",
       location: "Seattle, WA",
       postedAt: new Date("2024-01-12"),
@@ -43,6 +51,8 @@ export async function getJobs() {
     {
       id: 5,
       title: "DevOps Engineer",
+      description:
+        "We are looking for a DevOps Engineer with 3 years of experience in Azure, Terraform, and Jenkins.",
       company: "Microsoft",
       location: "Redmond, WA",
       postedAt: new Date("2024-01-11"),
@@ -53,6 +63,8 @@ export async function getJobs() {
     {
       id: 6,
       title: "Data Scientist",
+      description:
+        "We are looking for a Data Scientist with 3 years of experience in Python, TensorFlow, and SQL.",
       company: "Apple",
       location: "Cupertino, CA",
       postedAt: new Date("2024-01-10"),
@@ -63,6 +75,8 @@ export async function getJobs() {
     {
       id: 7,
       title: "Machine Learning Engineer",
+      description:
+        "We are looking for a Machine Learning Engineer with 3 years of experience in Python, PyTorch, and MLflow.",
       company: "Tesla",
       location: "Palo Alto, CA",
       postedAt: new Date("2024-01-09"),
@@ -73,6 +87,8 @@ export async function getJobs() {
     {
       id: 8,
       title: "Cloud Architect",
+      description:
+        "We are looking for a Cloud Architect with 3 years of experience in AWS, Salesforce, and Apex.",
       company: "Salesforce",
       location: "San Francisco, CA",
       postedAt: new Date("2024-01-08"),
@@ -83,6 +99,8 @@ export async function getJobs() {
     {
       id: 11,
       title: "Cloud Architect",
+      description:
+        "We are looking for a Cloud Architect with 3 years of experience in AWS, Salesforce, and Apex.",
       company: "Salesforce",
       location: "San Francisco, CA",
       postedAt: new Date("2024-01-08"),
@@ -93,6 +111,8 @@ export async function getJobs() {
     {
       id: 9,
       title: "Cloud Architect",
+      description:
+        "We are looking for a Cloud Architect with 3 years of experience in AWS, Salesforce, and Apex.",
       company: "Salesforce",
       location: "San Francisco, CA",
       postedAt: new Date("2024-01-08"),
@@ -103,6 +123,8 @@ export async function getJobs() {
     {
       id: 10,
       title: "Cloud Architect",
+      description:
+        "We are looking for a Cloud Architect with 3 years of experience in AWS, Salesforce, and Apex.",
       company: "Salesforce",
       location: "San Francisco, CA",
       postedAt: new Date("2024-01-08"),
@@ -113,6 +135,8 @@ export async function getJobs() {
     {
       id: 12,
       title: "Cloud Architect",
+      description:
+        "We are looking for a Cloud Architect with 3 years of experience in AWS, Salesforce, and Apex.",
       company: "Salesforce",
       location: "San Francisco, CA",
       postedAt: new Date("2024-01-08"),

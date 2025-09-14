@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import {
   VisibilityOutlined,
   BookmarkBorderOutlined,
+  Link as LinkIcon,
+  InfoOutline,
 } from "@mui/icons-material";
 import PageHeader from "~/components/page-header";
 import DataGridTable from "~/components/data-grid-table";
@@ -19,7 +21,7 @@ export async function loader() {
 export default function JobSearch() {
   const { jobs } = useLoaderData<typeof loader>();
 
-  const handleViewSource = (job: JobRow) => {
+  const handleGoToSource = (job: JobRow) => {
     window.open(job.source, "_blank");
   };
 
@@ -29,14 +31,20 @@ export default function JobSearch() {
 
   const tableActions: TableAction<JobRow>[] = [
     {
-      icon: <VisibilityOutlined />,
-      label: "View Source",
-      onClick: handleViewSource,
+      icon: <BookmarkBorderOutlined />,
+      label: "Save Job",
+      onClick: handleSaveJob,
+      color: "secondary",
+    },
+    {
+      icon: <LinkIcon />,
+      label: "Go to Source",
+      onClick: handleGoToSource,
       color: "primary",
     },
     {
-      icon: <BookmarkBorderOutlined />,
-      label: "Save Job",
+      icon: <InfoOutline />,
+      label: "View details",
       onClick: handleSaveJob,
       color: "secondary",
     },

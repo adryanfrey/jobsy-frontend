@@ -86,7 +86,9 @@ function getGridColumns<T>(
     baseColumns.push({
       field: col.field as string,
       headerName: col.headerName,
-      width: col.width || 150,
+      width: col.width,
+      flex: col.flex,
+      minWidth: col.minWidth || 100,
       sortable: col.sortable !== false,
       filterable: col.filterable !== false,
       type: col.type || "string",
