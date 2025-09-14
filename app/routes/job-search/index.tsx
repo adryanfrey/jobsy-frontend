@@ -25,6 +25,7 @@ export default function JobSearch() {
   const [selectedJobData, setSelectedJobData] = useState<ModalItem[] | null>(
     null
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGoToSource = (job: JobRow) => {
     window.open(job.source, "_blank");
@@ -45,6 +46,7 @@ export default function JobSearch() {
       { title: "Technologies/Tools", description: job.technologies.join(", ") },
     ];
     setSelectedJobData(modalData);
+    setIsModalOpen(true);
   };
 
   const tableActions: TableAction<JobRow>[] = [
@@ -91,11 +93,16 @@ export default function JobSearch() {
           actions={tableActions}
         />
       </Box>
-      <Modal
-        title="Job Details"
-        data={selectedJobData}
-        onClose={() => setSelectedJobData(null)}
-      />
+      {selectedJobData && (
+        <Modal
+          open={isModalOpen}
+          title="Job Details"
+          data={selectedJobData}
+          onClose={() => {
+            setIsModalOpen(false);
+          }}
+        />
+      )}
     </>
   );
 }

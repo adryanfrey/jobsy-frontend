@@ -15,16 +15,15 @@ export interface ModalItem {
 
 export interface ModalProps {
   title: string;
-  data: ModalItem[] | null;
+  open: boolean;
+  data: ModalItem[];
   onClose: () => void;
 }
 
-export default function Modal({ title, data, onClose }: ModalProps) {
-  const isOpen = data !== null;
-
+export default function Modal({ title, open, data, onClose }: ModalProps) {
   return (
     <Dialog
-      open={isOpen}
+      open={open}
       onClose={onClose}
       maxWidth="md"
       fullWidth
