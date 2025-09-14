@@ -63,7 +63,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   if (!user && !isPublicRoute) {
     return redirect("/login");
   }
-  return { user, isPublicRoute };
+  return { isPublicRoute };
 }
 
 export default function App() {
