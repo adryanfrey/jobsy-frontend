@@ -1,14 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import PageHeader from "~/components/page-header";
 
 export default function Home() {
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Welcome to Jobsy
-      </Typography>
-      <Typography variant="body1">
-        Your job search journey starts here. Use the navigation sidebar to explore job opportunities, manage your saved jobs, and customize your preferences.
-      </Typography>
-    </Box>
+    <PageHeader
+      title="Welcome to Jobsy"
+      description="Your job search journey starts here. Use the navigation sidebar to explore job opportunities, manage your saved jobs, and customize your preferences."
+    />
   );
 }

@@ -20,7 +20,6 @@ export default function AppLayout({ children }: LayoutProps) {
           component="main"
           sx={{
             flexGrow: 1,
-            padding: 2,
             overflow: "auto",
           }}
         >
