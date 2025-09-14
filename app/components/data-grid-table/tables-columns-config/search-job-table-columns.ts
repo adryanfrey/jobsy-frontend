@@ -10,7 +10,7 @@ export interface JobRow {
   technologies: string[];
 }
 
-export const jobColumns: ColumnConfig<JobRow>[] = [
+export const searchJobTableColumns: ColumnConfig<JobRow>[] = [
   {
     field: "title",
     headerName: "Job Title",

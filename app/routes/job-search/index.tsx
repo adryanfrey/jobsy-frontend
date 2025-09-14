@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router";
 import { Box } from "@mui/material";
+import { VisibilityOutlined, BookmarkBorderOutlined } from "@mui/icons-material";
 import PageHeader from "~/components/page-header";
 import DataGridTable from "~/components/data-grid-table";
 import { getJobs } from "~/services/jobs/get-jobs";
-import { jobColumns } from "~/components/data-grid-table/column-configs/job-columns";
-import type { JobRow } from "~/components/data-grid-table/column-configs/job-columns";
+import { searchJobTableColumns } from "~/components/data-grid-table/tables-columns-config/search-job-table-columns";
+import type { JobRow } from "~/components/data-grid-table/tables-columns-config/search-job-table-columns";
+import type { TableAction } from "~/components/data-grid-table/types";
 
 export async function loader() {
   const jobs = await getJobs();
@@ -13,6 +15,29 @@ export async function loader() {
 
 export default function JobSearch() {
   const { jobs } = useLoaderData<typeof loader>();
+
+  const handleViewSource = (job: JobRow) => {
+    console.log("View source for:", job.title);
+  };
+
+  const handleSaveJob = (job: JobRow) => {
+    console.log("Save job:", job.title);
+  };
+
+  const tableActions: TableAction<JobRow>[] = [
+    {
+      icon: <VisibilityOutlined />,
+      label: "View Source",
+      onClick: handleViewSource,
+      color: "primary",
+    },
+    {
+      icon: <BookmarkBorderOutlined />,
+      label: "Save Job",
+      onClick: handleSaveJob,
+      color: "secondary",
+    },
+  ];
 
   return (
     <>
@@ -29,11 +54,12 @@ export default function JobSearch() {
         }}
       >
         <DataGridTable<JobRow>
-          columns={jobColumns}
+          columns={searchJobTableColumns}
           rows={jobs}
           removeBorder={true}
           pageSize={10}
           pageSizeOptions={[5, 10, 25, 50]}
+          actions={tableActions}
         />
       </Box>
     </>

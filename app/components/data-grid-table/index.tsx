@@ -14,45 +14,7 @@ export default function DataGridTable<T extends { id: string | number }>({
   onRowClick,
 }: DataGridTableProps<T>) {
   const gridColumns: GridColDef[] = useMemo(() => {
-    let baseColumns: GridColDef[] = columns.map((col: ColumnConfig<T>) => ({
-      field: col.field as string,
-      headerName: col.headerName,
-      width: col.width || 150,
-      sortable: col.sortable !== false,
-      filterable: col.filterable !== false,
-      type: col.type || "string",
-      align: col.align || "left",
-      headerAlign: col.align || "left",
-      renderCell: col.render
-        ? (params) => {
-            if (col.render) {
-              return col.render(params.value, params.row);
-            }
-            return params.value;
-          }
-        : undefined,
-    }));
-
-    if (actions.length > 0) {
-      baseColumns.push({
-        field: "actions",
-        type: "actions",
-        headerName: "Actions",
-        width: actions.length * 50,
-        getActions: (params: GridRowParams) => {
-          return actions.map((action: TableAction<T>, index: number) => (
-            <GridActionsCellItem
-              key={index}
-              icon={action.icon}
-              label={action.label}
-              onClick={() => action.onClick(params.row as T)}
-              showInMenu={false}
-            />
-          ));
-        },
-      });
-    }
-    return baseColumns;
+    return getGridColumns(columns, actions);
   }, [columns, actions]);
 
   const handleRowClick = (params: GridRowParams) => {
@@ -93,4 +55,52 @@ export default function DataGridTable<T extends { id: string | number }>({
       />
     </Box>
   );
+}
+
+function getGridColumns<T>(
+  columns: ColumnConfig<T>[],
+  actions: TableAction<T>[]
+) {
+  let baseColumns: GridColDef[] = [];
+
+  if (actions.length > 0) {
+    baseColumns.push({
+      field: "actions",
+      type: "actions",
+      headerName: "Actions",
+      width: actions.length * 50,
+      getActions: (params: GridRowParams) => {
+        return actions.map((action: TableAction<T>, index: number) => (
+          <GridActionsCellItem
+            key={index}
+            icon={action.icon}
+            label={action.label}
+            onClick={() => action.onClick(params.row as T)}
+            showInMenu={false}
+          />
+        ));
+      },
+    });
+  }
+  columns.forEach((col: ColumnConfig<T>) =>
+    baseColumns.push({
+      field: col.field as string,
+      headerName: col.headerName,
+      width: col.width || 150,
+      sortable: col.sortable !== false,
+      filterable: col.filterable !== false,
+      type: col.type || "string",
+      align: col.align || "left",
+      headerAlign: col.align || "left",
+      renderCell: col.render
+        ? (params) => {
+            if (col.render) {
+              return col.render(params.value, params.row);
+            }
+            return params.value;
+          }
+        : undefined,
+    })
+  );
+  return baseColumns;
 }
