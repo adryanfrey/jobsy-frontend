@@ -1,4 +1,3 @@
-import type { Route } from "./+types/login";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormLabel from "@mui/material/FormLabel";
@@ -9,6 +8,7 @@ import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Form, redirect, useActionData, useNavigation } from "react-router";
 import { createSupabaseServerClient } from "~/supabase.server";
+import type { Route } from "./+types/index";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Login" }];

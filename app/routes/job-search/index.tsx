@@ -1,13 +1,14 @@
 import { Box, Typography } from "@mui/material";
 
-export default function UserPreferences() {
+export default function JobSearch() {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" component="h1" gutterBottom>
-        User Preferences
+        Job Search
       </Typography>
       <Typography variant="body1">
-        This is the user preferences page. Your account settings and preferences will be managed here.
+        This is the job search page. Job search functionality will be
+        implemented here.
       </Typography>
     </Box>
   );

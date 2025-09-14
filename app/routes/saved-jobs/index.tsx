@@ -7,7 +7,8 @@ export default function SavedJobs() {
         Saved Jobs
       </Typography>
       <Typography variant="body1">
-        This is the saved jobs page. Your saved job listings will be displayed here.
+        This is the saved jobs page. Your saved job listings will be displayed
+        here.
       </Typography>
     </Box>
   );
