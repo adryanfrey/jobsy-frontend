@@ -42,9 +42,13 @@ export default function DataGridTable<T extends { id: string | number }>({
               pageSize,
             },
           },
+          columns: {
+            columnVisibilityModel: getInitialColumnVisibility(columns),
+          },
         }}
         onRowClick={handleRowClick}
         disableRowSelectionOnClick
+        disableColumnMenu={false}
         sx={{
           flex: 1,
           border: removeBorder ? 0 : "1px solid rgba(224, 224, 224, 1)",
@@ -55,6 +59,16 @@ export default function DataGridTable<T extends { id: string | number }>({
       />
     </Box>
   );
+}
+
+function getInitialColumnVisibility<T>(columns: ColumnConfig<T>[]) {
+  const visibilityModel: Record<string, boolean> = {};
+  columns.forEach((col) => {
+    if (col.defaultHidden) {
+      visibilityModel[col.field as string] = false;
+    }
+  });
+  return visibilityModel;
 }
 
 function getGridColumns<T>(
@@ -86,7 +100,6 @@ function getGridColumns<T>(
     baseColumns.push({
       field: col.field as string,
       headerName: col.headerName,
-      width: col.width,
       flex: col.flex,
       minWidth: col.minWidth || 100,
       sortable: col.sortable !== false,

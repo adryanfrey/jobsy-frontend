@@ -3,7 +3,6 @@ import type { ReactNode, ReactElement } from "react";
 export interface ColumnConfig<T> {
   field: keyof T;
   headerName: string;
-  width?: number;
   flex?: number;
   minWidth?: number;
   type?: "string" | "number" | "date" | "boolean";
@@ -11,6 +10,7 @@ export interface ColumnConfig<T> {
   filterable?: boolean;
   render?: (value: any, row: T) => ReactNode;
   align?: "left" | "center" | "right";
+  defaultHidden?: boolean;
 }
 
 export interface TableAction<T> {
