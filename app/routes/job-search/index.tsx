@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import {
   BookmarkBorderOutlined,
   Link as LinkIcon,
   InfoOutline,
+  SearchOutlined,
 } from "@mui/icons-material";
 import PageHeader from "~/components/page-header";
 import DataGridTable from "~/components/data-grid-table";
@@ -75,6 +76,15 @@ export default function JobSearch() {
       <PageHeader
         title="Job Search"
         description="Browse and search available job opportunities according to your preferences."
+        actionButton={
+          <Button
+            variant="contained"
+            startIcon={<SearchOutlined />}
+            color="primary"
+          >
+            Perform new search
+          </Button>
+        }
       />
       <Box
         sx={{
