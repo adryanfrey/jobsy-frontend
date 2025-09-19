@@ -1,0 +1,110 @@
+import type { SavedJobRow } from "~/components/data-grid-table/tables-columns-config/saved-jobs-table-columns";
+
+export async function getSavedJobs(): Promise<SavedJobRow[]> {
+  return [
+    {
+      id: 1,
+      title: "Senior React Developer",
+      description:
+        "We are looking for a Senior React Developer with 5+ years of experience in React, TypeScript, and Node.js. Join our dynamic team and work on cutting-edge web applications.",
+      company: "Meta",
+      location: "Menlo Park, CA",
+      postedAt: new Date("2024-01-15"),
+      workplaceType: "Hybrid",
+      technologies: ["React", "TypeScript", "Node.js", "GraphQL"],
+      source: "https://www.linkedin.com/",
+      status: "to apply",
+    },
+    {
+      id: 2,
+      title: "Frontend Engineer",
+      description:
+        "We are looking for a Frontend Engineer with 3+ years of experience in Vue.js, JavaScript, and CSS frameworks.",
+      company: "Shopify",
+      location: "Toronto, ON",
+      postedAt: new Date("2024-01-14"),
+      workplaceType: "Remote",
+      technologies: ["Vue.js", "JavaScript", "Tailwind CSS", "Nuxt.js"],
+      source: "https://www.indeed.com/",
+      status: "application sent",
+    },
+    {
+      id: 3,
+      title: "Full Stack Developer",
+      description:
+        "We are looking for a Full Stack Developer with experience in React, Python, and AWS cloud services.",
+      company: "Stripe",
+      location: "San Francisco, CA",
+      postedAt: new Date("2024-01-13"),
+      workplaceType: "On-site",
+      technologies: ["React", "Python", "Django", "AWS"],
+      source: "https://www.glassdoor.com/",
+      status: "waiting for response",
+    },
+    {
+      id: 4,
+      title: "Backend Engineer",
+      description:
+        "We are looking for a Backend Engineer with expertise in Java, Spring Boot, and microservices architecture.",
+      company: "Uber",
+      location: "San Francisco, CA",
+      postedAt: new Date("2024-01-12"),
+      workplaceType: "Hybrid",
+      technologies: ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
+      source: "https://www.linkedin.com/",
+      status: "rejected",
+    },
+    {
+      id: 5,
+      title: "DevOps Engineer",
+      description:
+        "We are looking for a DevOps Engineer with experience in Kubernetes, Docker, and CI/CD pipelines.",
+      company: "GitHub",
+      location: "Remote",
+      postedAt: new Date("2024-01-11"),
+      workplaceType: "Remote",
+      technologies: ["Kubernetes", "Docker", "Jenkins", "Terraform"],
+      source: "https://github.com/careers",
+      status: "offer received",
+    },
+    {
+      id: 6,
+      title: "Data Engineer",
+      description:
+        "We are looking for a Data Engineer with experience in Python, Apache Spark, and data pipeline development.",
+      company: "Airbnb",
+      location: "San Francisco, CA",
+      postedAt: new Date("2024-01-10"),
+      workplaceType: "Hybrid",
+      technologies: ["Python", "Apache Spark", "Airflow", "BigQuery"],
+      source: "https://www.linkedin.com/",
+      status: "to apply",
+    },
+    {
+      id: 7,
+      title: "Machine Learning Engineer",
+      description:
+        "We are looking for a Machine Learning Engineer with experience in Python, TensorFlow, and MLOps practices.",
+      company: "OpenAI",
+      location: "San Francisco, CA",
+      postedAt: new Date("2024-01-09"),
+      workplaceType: "On-site",
+      technologies: ["Python", "TensorFlow", "PyTorch", "MLflow"],
+      source: "https://openai.com/careers",
+      status: "application sent",
+    },
+    {
+      id: 8,
+      title: "iOS Developer",
+      description:
+        "We are looking for an iOS Developer with experience in Swift, SwiftUI, and iOS SDK development.",
+      company: "Apple",
+      location: "Cupertino, CA",
+      postedAt: new Date("2024-01-08"),
+      workplaceType: "On-site",
+      technologies: ["Swift", "SwiftUI", "Xcode", "Core Data"],
+      source: "https://jobs.apple.com/",
+      status: "waiting for response",
+    },
+  ];
+}
